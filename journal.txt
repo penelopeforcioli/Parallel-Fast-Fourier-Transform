@@ -1,0 +1,65 @@
+------- 22 MAY -------
+
+Cooley Tukey V1 works 
+N= 8 : Elapsed time (V1): 0.000792417 seconds
+
+Cooley Tukey V2: same as CooleyTukeyV1 but precomputes the root with a function and 
+then the resulting array is passed as an argument to the Cooley Tukey function.
+Thought it might be quicker: 
+N= 8 : Elapsed time (V2): 0.000484958 seconds
+Difference is not significant but we need to try on the weather dataset to see if for large values of N it's better
+Le temps d'execution  varie bcp bcp 
+
+------- 26 / 27 May -------
+
+issue with the length of the dataset : ok for 2**i but not for other cases
+
+N= 2048:
+cooley tukey V1 : Elapsed time: 0.0264054 seconds
+cooley tukey V2: Elapsed time: 0.034683 seconds
+
+version 2 kind of #inutile 
+
+------- 29 May ----------
+DFT and Inverse DFT implemented with  Cooley Tukey 
+set weather data to 2^n
+Compression algorithm implemented (https://navaasokan.medium.com/image-compression-using-dft-6292083d6de6)
+
+
+------- 30 May ----------
+fixed compression 
+inverse DFT works
+visualiser nickel 
+got rid of the 0s in the visualiser
+
+
+------- 31 May ----------
+// of 1D FFT
+problem with the bit reversal part (https://en.wikipedia.org/wiki/Bit-reversal_permutation)
+
+
+
+TEST 07/06: 
+
+parrallel_DFT_V1  : la dFT et l'InvDFT est // mais pas complètement (pas de precomputation des twiddle factors) 
+avec p= 4, k=1500:
+
+Time taken for the parallel DFT: 0.00217629 seconds
+Time taken for the parallel  inverse DFT: 0.00220079 seconds
+
+Time taken for the non-parallel DFT: 0.00300088 seconds
+Time taken for the non-parallel  inverse DFT: 0.00300138 seconds
+
+
+
+parrallel_DFT_V2 // la computation des twiddle factors as well
+pour p =4,  k=1500: un peu décalé le resultat mais
+Time taken for the parallel DFT: 0.00153379 seconds
+Time taken for the parallel  inverse DFT: 0.00152325 seconds
+Info in <TCanvas::Print>: png file plots/parallel.png has been created
+
+
+https://www.scirp.org/journal/paperinformation?paperid=93867#f12
+
+
+
